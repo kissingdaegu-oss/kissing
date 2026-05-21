@@ -28,7 +28,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
         <div className="md:hidden flex items-center justify-between px-4 py-3 bg-white border-b border-primary-100">
           <div className="flex items-center gap-2">
             <span className="text-xl">🎵</span>
-            <span className="font-extrabold text-primary-500">키씽</span>
+            <span className="font-extrabold text-primary-500">키씽대구</span>
           </div>
           <button
             onClick={() => setSidebarOpen(true)}

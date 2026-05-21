@@ -9,9 +9,9 @@ export default defineConfig({
       registerType: 'autoUpdate',
       includeAssets: ['icons/*.png', 'icons/*.svg'],
       manifest: {
-        name: '키씽 Kissing',
-        short_name: '키씽',
-        description: '아카펠라 동호회 키씽 멤버 앱',
+        name: '키씽대구 Kissing Daegu',
+        short_name: '키씽대구',
+        description: '아카펠라 동호회 키씽대구 멤버 앱',
         theme_color: '#F472B6',
         background_color: '#FFF1F5',
         display: 'standalone',

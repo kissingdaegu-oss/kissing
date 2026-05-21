@@ -84,8 +84,8 @@ export default function Register() {
       <div className="w-full max-w-sm">
         <div className="text-center mb-8">
           <div className="text-5xl mb-2">🎵</div>
-          <h1 className="text-3xl font-extrabold text-primary-500">키씽</h1>
-          <p className="text-gray-400 text-sm mt-1">Kissing A Cappella</p>
+          <h1 className="text-3xl font-extrabold text-primary-500">키씽대구</h1>
+          <p className="text-gray-400 text-sm mt-1">Kissing Daegu</p>
         </div>
 
         <div className="card">

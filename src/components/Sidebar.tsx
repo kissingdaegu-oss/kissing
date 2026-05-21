@@ -27,8 +27,8 @@ export default function Sidebar({ onClose }: { onClose?: () => void }) {
         <div className="flex items-center gap-2">
           <span className="text-2xl">🎵</span>
           <div>
-            <p className="font-extrabold text-primary-500 text-lg leading-tight">키씽</p>
-            <p className="text-xs text-gray-400">Kissing A Cappella</p>
+            <p className="font-extrabold text-primary-500 text-lg leading-tight">키씽대구</p>
+            <p className="text-xs text-gray-400">Kissing Daegu</p>
           </div>
         </div>
       </div>
