@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react'
+import { Plus, Minus, Star } from 'lucide-react'
 import { supabase } from '../supabase'
 import { useAuth } from '../contexts/AuthContext'
 import { Profile, Part, PART_LABELS } from '../types'
@@ -36,6 +37,12 @@ export default function Members() {
   const toggleRole = async (member: Profile) => {
     const newRole = member.role === 'admin' ? 'member' : 'admin'
     await supabase.from('profiles').update({ role: newRole }).eq('id', member.id)
+    loadMembers()
+  }
+
+  const changePoints = async (member: Profile, delta: number) => {
+    const newPoints = Math.max(0, (member.points ?? 0) + delta)
+    await supabase.from('profiles').update({ points: newPoints }).eq('id', member.id)
     loadMembers()
   }
 
@@ -86,22 +93,40 @@ export default function Members() {
                   <span className="text-[10px] bg-primary-400 text-white px-1.5 py-0.5 rounded-full font-semibold">관리자</span>
                 )}
               </div>
-              <div className="flex items-center gap-2 mt-0.5">
+              <div className="flex items-center gap-2 mt-0.5 flex-wrap">
                 <span className={`text-xs px-2 py-0.5 rounded-full font-semibold ${PART_BADGE[member.part]}`}>
                   {PART_LABELS[member.part]}
                 </span>
                 <span className="text-xs text-gray-400">
                   {format(parseISO(member.created_at), 'yyyy.MM.dd 가입', { locale: ko })}
                 </span>
+                <span className="flex items-center gap-0.5 text-xs text-yellow-600 font-semibold">
+                  <Star size={11} className="fill-yellow-400 text-yellow-400" />
+                  {member.points ?? 0}
+                </span>
               </div>
             </div>
-            {isAdmin && member.id !== myProfile?.id && (
-              <button
-                onClick={() => toggleRole(member)}
-                className="text-xs px-3 py-1.5 rounded-xl border border-primary-200 text-primary-500 hover:bg-primary-50 font-semibold flex-shrink-0"
-              >
-                {member.role === 'admin' ? '일반으로' : '관리자로'}
-              </button>
+            {isAdmin && (
+              <div className="flex items-center gap-1 flex-shrink-0">
+                {/* 포인트 */}
+                <button onClick={() => changePoints(member, -1)}
+                  className="w-7 h-7 rounded-lg bg-gray-100 hover:bg-rose-100 text-gray-500 hover:text-rose-400 flex items-center justify-center">
+                  <Minus size={13} />
+                </button>
+                <button onClick={() => changePoints(member, 1)}
+                  className="w-7 h-7 rounded-lg bg-gray-100 hover:bg-primary-100 text-gray-500 hover:text-primary-500 flex items-center justify-center">
+                  <Plus size={13} />
+                </button>
+                {/* 역할 */}
+                {member.id !== myProfile?.id && (
+                  <button
+                    onClick={() => toggleRole(member)}
+                    className="text-xs px-2.5 py-1.5 rounded-xl border border-primary-200 text-primary-500 hover:bg-primary-50 font-semibold ml-1"
+                  >
+                    {member.role === 'admin' ? '일반' : '관리자'}
+                  </button>
+                )}
+              </div>
             )}
           </div>
         ))}

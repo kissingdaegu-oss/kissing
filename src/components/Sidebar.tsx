@@ -1,5 +1,5 @@
 import { NavLink } from 'react-router-dom'
-import { LayoutDashboard, CalendarDays, Users, BookOpen, ClipboardCheck, LogOut } from 'lucide-react'
+import { LayoutDashboard, CalendarDays, Users, ImageIcon, ClipboardCheck, LogOut, UserCircle } from 'lucide-react'
 import { supabase } from '../supabase'
 import { useAuth } from '../contexts/AuthContext'
 import { PART_LABELS } from '../types'
@@ -8,8 +8,9 @@ const navItems = [
   { to: '/',           label: '홈',     icon: LayoutDashboard },
   { to: '/schedule',   label: '일정',   icon: CalendarDays },
   { to: '/members',    label: '회원',   icon: Users },
-  { to: '/library',    label: '자료실', icon: BookOpen },
+  { to: '/photos',     label: '사진첩', icon: ImageIcon },
   { to: '/attendance', label: '출석',   icon: ClipboardCheck },
+  { to: '/profile',    label: '프로필', icon: UserCircle },
 ]
 
 export default function Sidebar({ onClose }: { onClose?: () => void }) {

@@ -14,6 +14,16 @@ export interface Profile {
   name: string
   part: Part
   role: Role
+  points: number
+  created_at: string
+}
+
+export interface Photo {
+  id: string
+  url: string
+  caption: string
+  uploaded_by: string
+  uploader_name: string
   created_at: string
 }
 

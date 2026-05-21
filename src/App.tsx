@@ -7,8 +7,9 @@ import Register from './pages/Register'
 import Dashboard from './pages/Dashboard'
 import Schedule from './pages/Schedule'
 import Members from './pages/Members'
-import Library from './pages/Library'
+import Photos from './pages/Photos'
 import Attendance from './pages/Attendance'
+import Profile from './pages/Profile'
 
 export default function App() {
   return (
@@ -32,14 +33,19 @@ export default function App() {
               <Layout><Members /></Layout>
             </ProtectedRoute>
           } />
-          <Route path="/library" element={
+          <Route path="/photos" element={
             <ProtectedRoute>
-              <Layout><Library /></Layout>
+              <Layout><Photos /></Layout>
             </ProtectedRoute>
           } />
           <Route path="/attendance" element={
             <ProtectedRoute>
               <Layout><Attendance /></Layout>
+            </ProtectedRoute>
+          } />
+          <Route path="/profile" element={
+            <ProtectedRoute>
+              <Layout><Profile /></Layout>
             </ProtectedRoute>
           } />
         </Routes>
